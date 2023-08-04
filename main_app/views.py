@@ -1,7 +1,13 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Recipe
 
 # Create your views here.
+
+class RecipeCreate(CreateView):
+  model = Recipe
+  fields = ['title', 'culture', 'description']
+  success_url = '/recipes/'
 
 def recipes_index(request):
     recipes = Recipe.objects.all()

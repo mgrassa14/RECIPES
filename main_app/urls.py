@@ -11,4 +11,6 @@ urlpatterns = [
     path('recipes/', views.recipes_index, name='index'),
     # localhost:8000/recipes/1
     path('recipes/<int:recipe_id>/', views.recipes_detail, name='detail'),
+    # localhost:8000/recipes/create
+    path('recipes/create', views.RecipeCreate.as_view(), name='recipes_create'),
 ]
