@@ -7,31 +7,21 @@
     {% for recipe in recipes %}
         <div class="col s12 m6">
             <div class="card">
-                <a href="/recipes/{{ recipe.id }}">
+                <a href="{% url 'detail' recipe.id %}">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator" src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg">
                     </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">{{ recipe.title }}<i class="material-icons right">more_vert</i></span>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">{{ recipe.title }}<i class="material-icons right">close</i></span>
-                        <p>Culture: {{ recipe.culture }}</p>
-                        <p>Description: {{ recipe.description }}</p>
-                    </div>
                 </a>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">{{ recipe.title }}<i class="material-icons right">more_vert</i></span>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">{{ recipe.title }}<i class="material-icons right">close</i></span>
+                    <p>Culture: {{ recipe.culture }}</p>
+                    <p>Description: {{ recipe.description }}</p>
+                </div>
             </div>
         </div>
         {% endfor %}
 </div>
-
-    <!-- <div class="card">
-        <div class="card-content">
-        <span class="card-title">{{ recipe.title }}</span>
-        <p>Culture: {{ recipe.culture }}</p>
-        <p>Description: {{ recipe.description }}</p>
-        </div>
-    </div> -->
-
-
 {% endblock %}

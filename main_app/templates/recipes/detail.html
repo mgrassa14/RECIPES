@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Recipe Details</h1>
+
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">{{ recipe.title }}</span>
+        <p>Culture: {{ recipe.culture }}</p>
+        <p>Description: {{ recipe.description }}</p>
+    </div>
+    <div class="card-action">
+        <a href="">Edit</a>
+        <a href="">Delete</a>
+    </div>
+</div>
+<p>title: {{ recipe.title }}</p>
+{% endblock %}

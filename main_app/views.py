@@ -1,28 +1,18 @@
 from django.shortcuts import render
+from .models import Recipe
 
 # Create your views here.
-from django.http import HttpResponse
 
-class Recipe:  # Note that parens are optional if not inheriting from another class
-  def __init__(self, title, culture, description):
-    self.title = title
-    self.culture = culture
-    self.description = description
+def recipes_index(request):
+    recipes = Recipe.objects.all()
+    return render(request, 'recipes/index.html', { 'recipes': recipes })
 
-recipes = [
-    Recipe('Pesto Pasta', 'italian', 'it is very good'),
-    Recipe('Bolognese Pasta', 'italiano', 'it is good'),
-    Recipe('Cabonara Pasta', 'italiana', 'it is the best')
-]
+def recipes_detail(request, recipe_id):
+    recipe = Recipe.objects.get(id=recipe_id)
+    return render(request, 'recipes/detail.html', { 'recipe': recipe })
 
 def home(request):
     return render(request, 'home.html')
 
 def about(request):
   return render(request, 'about.html')
-
-# def recipes_index(request):
-#     recipes = Recipe.objects.all()
-#     return render(request, 'recipes/index.html', { 'recipes': recipes })
-def recipes_index(request):
-    return render(request, 'recipes/index.html', { 'recipes': recipes })

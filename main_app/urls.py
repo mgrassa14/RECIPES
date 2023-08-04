@@ -9,4 +9,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     # localhost:8000/recipes
     path('recipes/', views.recipes_index, name='index'),
+    # localhost:8000/recipes/1
+    path('recipes/<int:recipe_id>/', views.recipes_detail, name='detail'),
 ]
