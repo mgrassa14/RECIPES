@@ -10,8 +10,8 @@
         <p>Description: {{ recipe.description }}</p>
     </div>
     <div class="card-action">
-        <a href="">Edit</a>
-        <a href="">Delete</a>
+        <a href="{% url 'recipes_update' recipe.id %}">Edit</a>
+        <a href="{% url 'recipes_delete' recipe.id %}">Delete</a>
     </div>
 </div>
 <p>title: {{ recipe.title }}</p>

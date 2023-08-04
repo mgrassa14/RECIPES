@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Recipe
 
 # Create your views here.
@@ -8,6 +8,14 @@ class RecipeCreate(CreateView):
   model = Recipe
   fields = ['title', 'culture', 'description']
   success_url = '/recipes/'
+  
+class RecipeUpdate(UpdateView):
+    model = Recipe
+    fields = ['culture', 'description']
+    
+class RecipeDelete(DeleteView):
+    model = Recipe
+    success_url = '/recipes/'
 
 def recipes_index(request):
     recipes = Recipe.objects.all()
