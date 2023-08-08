@@ -12,3 +12,27 @@ class Recipe(models.Model):
     
     def __str__(self):
         return self.title
+    
+# MEASUREMENTS = (
+#         ('cup', 'Cup'),
+#         ('fl oz', 'Fluid Ounce'),
+#         ('gal', 'Gallon'),
+#         ('mL', 'Milliliter'),
+#         ('L', 'Liter'),
+#         ('pt', 'Pint'),
+#         ('qt', 'Quart'),
+#         ('tbsp', 'Tablespoon'),
+#         ('tsp', 'Teaspoon'),
+#         ('gal', 'Gallon'),
+# )
+
+class Ingredients(models.Model):
+    name = models.CharField(max_length=100, default='')
+    quantity = models.PositiveIntegerField(default=0)
+    measurement = models.CharField(max_length=100, default='')
+    
+    # recipe_id FK
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.name

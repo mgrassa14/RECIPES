@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Recipe
+from .forms import IngredientsForm
 
 # Create your views here.
 
@@ -23,7 +24,8 @@ def recipes_index(request):
 
 def recipes_detail(request, recipe_id):
     recipe = Recipe.objects.get(id=recipe_id)
-    return render(request, 'recipes/detail.html', { 'recipe': recipe })
+    ingredients_form = IngredientsForm()
+    return render(request, 'recipes/detail.html', { 'recipe': recipe, 'ingredients_form': IngredientsForm })
 
 def home(request):
     return render(request, 'home.html')

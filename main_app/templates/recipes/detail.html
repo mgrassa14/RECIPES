@@ -15,4 +15,30 @@
     </div>
 </div>
 <p>title: {{ recipe.title }}</p>
+
+<div class="col s6">
+
+    <form method="post">
+        {% csrf_token %}
+        {{ ingredients_form.as_p }}
+        <input type="submit" class="btn" value="Add Ingredient">
+    </form>
+
+    <table class="striped">
+      <thead>
+        <tr><th>Ingredients</th></tr>
+      </thead>
+      <tbody>
+        {% for ingredients in recipe.ingredients_set.all %}
+          <tr>
+            <td>{{ingredients.quantity}}</td>
+            {% if ingredients.measurement != '' %}
+                <td>{{ingredients.measurement}}</td>
+            {% endif %}
+            <td>{{ingredients.name}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 {% endblock %}
