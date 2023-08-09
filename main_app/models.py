@@ -26,7 +26,7 @@ class Recipe(models.Model):
 #         ('gal', 'Gallon'),
 # )
 
-class Ingredients(models.Model):
+class Ingredient(models.Model):
     name = models.CharField(max_length=100, default='')
     quantity = models.PositiveIntegerField(default=0)
     measurement = models.CharField(max_length=100, default='')
@@ -36,3 +36,12 @@ class Ingredients(models.Model):
     
     def __str__(self):
         return self.name
+    
+class Direction(models.Model):
+    step = models.TextField('step', max_length=250, default='')
+    
+    # recipe_id FK
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    
+    # def __str__(self):
+    #     return self.step
