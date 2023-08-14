@@ -12,19 +12,13 @@ class Recipe(models.Model):
     
     def __str__(self):
         return self.title
-    
-# MEASUREMENTS = (
-#         ('cup', 'Cup'),
-#         ('fl oz', 'Fluid Ounce'),
-#         ('gal', 'Gallon'),
-#         ('mL', 'Milliliter'),
-#         ('L', 'Liter'),
-#         ('pt', 'Pint'),
-#         ('qt', 'Quart'),
-#         ('tbsp', 'Tablespoon'),
-#         ('tsp', 'Teaspoon'),
-#         ('gal', 'Gallon'),
-# )
+
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for recipe_id: {self.recipe_id} @{self.url}"    
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100, default='')

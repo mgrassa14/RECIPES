@@ -1,7 +1,15 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Recipe
+
+import uuid
+import boto3
+from .models import Recipe, Photo
+
 from .forms import IngredientForm, DirectionForm
+
+
+S3_BASE_URL = 'https://s3.us-west-1.amazonaws.com/'
+BUCKET = 'recipeapp-8-14'
 
 # Create your views here.
 
